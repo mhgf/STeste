@@ -1,0 +1,7 @@
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.csproj.AssemblyReference.cache
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.GeneratedMSBuildEditorConfig.editorconfig
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.AssemblyInfoInputs.cache
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.AssemblyInfo.cs
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.csproj.CoreCompileInputs.cache
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.MvcApplicationPartsAssemblyInfo.cs
+F:\Fonts\TesteSemantix\SemantixTestApi\SemantixTestApi\obj\Debug\net6.0\SemantixTestApi.MvcApplicationPartsAssemblyInfo.cache
