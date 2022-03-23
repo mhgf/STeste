@@ -1,0 +1,21 @@
+input {
+  font-size: 30px;
+  padding: 0 5px;
+  border: 2px solid #ccc;
+  border-left: 0;
+  width: 100%;
+  color: #666;
+  border-radius: 6px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: bold;
+}
+
+.Text-equal {
+  font-size: 48px;
+  margin: 3px 0px;
+}
+
+.Text-value {
+  font-size: 40px;
+  margin: 0px 0px;
+}
