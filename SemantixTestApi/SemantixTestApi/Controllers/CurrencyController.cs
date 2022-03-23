@@ -1,69 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
+using SemantixTestApi.Services.Contract;
+using SemantixTestApi.Shared.Enum;
 
 namespace SemantixTestApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CurrencyController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private readonly ICurrencyService _service;
 
-        private readonly ILogger<CurrencyController> _logger;
+        public CurrencyController(ICurrencyService service) => _service = service;
 
-        public CurrencyController(ILogger<CurrencyController> logger)
-        {
-            _logger = logger;
-        }
+        [HttpGet("Dolar")]
+        public async Task<IActionResult> Dolar() => await GetResult(CurrencyType.USD);
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("Euro")]
+        public async Task<IActionResult> Euro() => await GetResult(CurrencyType.EUR);
+
+        [HttpGet("Libra")]
+        public async Task<IActionResult> Libra() => await GetResult(CurrencyType.GBP);
+
+        private async Task<IActionResult> GetResult(CurrencyType type)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
+                var result = await _service.GetCurrencyAsync(type);
 
-        [HttpGet(Name = "Dolar")]
-        public IEnumerable<WeatherForecast> Dolar()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
+                if (result is null) return NotFound();
 
-        [HttpGet(Name = "Euro")]
-        public IEnumerable<WeatherForecast> Euro()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                return Ok(result);
+            }
+            catch (Exception ex)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-
-        [HttpGet(Name = "Libra")]
-        public IEnumerable<WeatherForecast> Libra()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
