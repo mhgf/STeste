@@ -14,9 +14,7 @@ const fetcher = (params: string) =>
     .then((res) => res as CurrencyModel);
 
 export function Currency(props: CurrencyProp) {
-  const [valueInput, setvalueInput] = useState<string | null | undefined>(
-    "1.0"
-  );
+  const [valueInput, setvalueInput] = useState<string | null | undefined>("1");
   const [currency, setCurrency] = useState<CurrencyModel | undefined>();
 
   const { data, error } = useSWR(props.currency, fetcher);
